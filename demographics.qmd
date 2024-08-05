@@ -1,17 +1,68 @@
 ---
-title: "Conversion from CIS to MS"
+title: "Demographic Factors"
 execute: 
   echo: false
 ---
 
 ```{r}
-#| message: false 
+#| label: setup
+#| message: false
+
 library(tidyverse)
 library(brms)
 library(tidybayes)
 library(gtsummary)
 library(wesanderson)
 library(plotly)
+```
+
+```{r}
+#| label: import_data
+
+# Brought downloaded CSV file with data into project through terminal. Turned
+# CSV file into data frame. Kept only the data that combined all age groups
+# together to see the general trend in incidence rates over time.
+
+ms_data <- read_csv("DataFilterExport.csv", show_col_types = FALSE)
+ms_data_clean_time <- ms_data |>
+  filter(Age == "ALL")
+```
+
+```{r}
+#| label: create_line_graph
+
+# Created line graph to show trend of MS Incidence Rates in Alberta over time.
+# Tried bar graph but decided on line graph so trend was more apparent. Created
+# lines for each of the Sex categories to see the effect of Sex on incidence
+# rate change over time. Used Wes Anderson Palettes R package for colors in line
+# graph. Opted not to add title since it was the same as the page and subtitle
+# since key takeaways were listed in paragraph below. Used minimal theme for
+# clean look.
+
+ms_line <-
+  ms_data_clean_time |>
+  ggplot(aes(x = Year, y = `Incidence Rate`, color = Sex)) +
+  geom_line(linewidth = 0.75) +
+  scale_color_manual(values = wes_palette("Cavalcanti1")[c(4, 1, 5)]) +
+  labs(x = "Year", 
+       y = "Incidence Rate (per 100 000)", 
+       color = "Sex") +
+  theme_minimal()
+
+# Used plotly package to make graph interactive. Added caption to provide source
+# of data, and adjusted sizing and placement of caption. Displayed line graph.
+
+interactive_line <- 
+  ggplotly(ms_line, tooltip = c("Year", "Incidence Rate")) |>
+    layout( annotations = list(
+      text = "Data from Alberta IHDA",
+      x = 1, y = -0.25,
+      xref = "paper", yref = "paper",
+      showarrow = FALSE,
+      font = list(size = 12)), 
+      margin = list(b = 100))
+
+interactive_line
 ```
 
 ```{r}
@@ -101,41 +152,40 @@ ms_data <- raw_df[-c(274:288) ,] |>
          Spinal_Cord_MRI,
          group) |> 
   drop_na()
-
-x <- ms_data |>
-  filter(Oligoclonal_Bands %in% c("positive", "negative"))
 ```
 
 ```{r}
 #| cache: true
-fit_ob <- brm(formula = group ~ Oligoclonal_Bands,
-              data = x,
+fit_dem <- brm(formula = group ~ Gender,
+              data = ms_data,
               family = bernoulli(),
               silent = 2,
               refresh = 0,
               seed = 9)
 ```
 
+```{r}
+tbl_regression(fit_dem)
+```
 
 ```{r}
-ndata <- tibble(expand_grid(Oligoclonal_Bands = c("positive", "negative")))
+#| message: false
+ndata <- tibble(Gender = c("male", "female"))
 
-fit_ob |>
+fit_dem |>
   add_epred_draws(newdata = ndata) |>
   ungroup() |>
-  ggplot(aes(x = .epred, fill = Oligoclonal_Bands)) + 
+  ggplot(aes(x = .epred, fill = Gender)) + 
   geom_density(aes(y = after_stat(count/sum(count)))) +
-  labs(title = "Posterior Distribution for Probability of Developing MS Based on OCBs",
+  labs(title = "Posterior Distribution for Probability of Developing MS Based on Sex",
        x = "Expected Probability of Developing MS",
        y = "Probability",
-       fill = "Presence of OCBs") +
+       fill = "Sex") +
   scale_x_continuous(labels = scales::percent_format(accuracy = 1)) +
-  scale_fill_manual(values = wes_palette("FrenchDispatch")) +
+  scale_fill_manual(values = wes_palette("Royal1")) +
   scale_y_continuous(labels = scales::percent_format()) +
   theme_classic()
 ```
-
-
-Multiple Sclerosis (MS) is a devastating, demyelinating disease of the central nervous system that affects people of all ages and genders, and Clinically Isolated Syndrome (CIS) is a patient's first episode of neurological symptoms, which may then develop into MS. Using data from a study of the medical histories of Mexican patients diagnosed with CIS at NINN in Mexico City from 2006 to 2010, I sought to understand the connection between various symptoms and factors and the patient's later diagnosis of MS. After exploring the data, I focused on the presence of Oligoclonal Bands (OCBs), which are bands of immunogloblins seen in blood serum or cerebrospinal fluid, and isolated the data with only the responses "positive" and "negative". Positive indicates detected presence while negative indicates OCBs were not detected. Patients with a presence of OCBs have about 73% to 93% lower odds to be diagnosed with MS. Although the data included multiple variables such as age, gender, years of schooling, and past Varicella infections, I chose to model Oligoclonal Bands, with only values of "positive" and "negative", as a logistic function of whether or not a patient was diagnosed with MS. Patients with a positive presence were less likely to be diagnosed with MS than those with a negative presence.  
+```
 
 
