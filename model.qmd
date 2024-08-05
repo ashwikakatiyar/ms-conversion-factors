@@ -1,5 +1,5 @@
 ---
-title: "Conversion from CIS to MS"
+title: "Model"
 execute: 
   echo: false
 ---
@@ -114,25 +114,12 @@ fit_ob <- brm(formula = group ~ Oligoclonal_Bands,
               seed = 9)
 ```
 
-
 ```{r}
-ndata <- tibble(expand_grid(Oligoclonal_Bands = c("positive", "negative")))
-
-fit_ob |>
-  add_epred_draws(newdata = ndata) |>
-  ungroup() |>
-  ggplot(aes(x = .epred, fill = Oligoclonal_Bands)) + 
-  geom_histogram(aes(y = after_stat(count/sum(count))),
-                   bins = 50) +
-  labs(title = "Posterior Distribution for Probability of Developing MS Based on OCBs",
-       x = "Expected Probability of Developing MS",
-       fill = "Presence of OCBs") +
-  scale_x_continuous(labels = scales::percent_format(accuracy = 1)) +
-    scale_y_continuous(labels = scales::percent_format()) +
-    theme_classic()
+#| message: false
+#| warning: false
+tbl_regression(fit_ob)
 ```
 
 
-Multiple Sclerosis (MS) is a devastating, demyelinating disease of the central nervous system that affects people of all ages and genders, and Clinically Isolated Syndrome (CIS) is a patient's first episode of neurological symptoms, which may then develop into MS. Using data from a study of the medical histories of Mexican patients diagnosed with CIS at NINN in Mexico City from 2006 to 2010, I sought to understand the connection between various symptoms and factors and the patient's later diagnosis of MS. After exploring the data, I focused on the presence of Oligoclonal Bands (OCBs), which are bands of immunogloblins seen in blood serum or cerebrospinal fluid, and isolated the data with only the responses "positive" and "negative". Positive indicates detected presence while negative indicates OCBs were not detected. Patients with a presence of OCBs have about 73% to 93% lower odds to be diagnosed with MS. Although the data included multiple variables such as age, gender, years of schooling, and past Varicella infections, I chose to model Oligoclonal Bands, with only values of "positive" and "negative", as a logistic function of whether or not a patient was diagnosed with MS. Patients with a positive presence were less likely to be diagnosed with MS than those with a negative presence.  
 
 
