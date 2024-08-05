@@ -7,6 +7,13 @@
     "text": "My name is Ashwika Katiyar, and I am a rising senior from Frisco, Texas! Here is my Github account. You can contact me at ashwikakatiyar@gmail.com.\nThis project, and its associated Github repository explores factors associated with the development of Multiple Sclerosis.\nThis project was created as a part of Kane’s Data Science Bootcamp."
   },
   {
+    "objectID": "demographics.html",
+    "href": "demographics.html",
+    "title": "Demographic Factors",
+    "section": "",
+    "text": "Characteristic\nBeta\n95% CI\n1\n\n\n\n\nGender\n\n\n\n\n\n\n    Gendermale\n-1.0\n-1.5, -0.51\n\n\n\n1\nCI = Credible Interval\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n```"
+  },
+  {
     "objectID": "model.html",
     "href": "model.html",
     "title": "Model",
