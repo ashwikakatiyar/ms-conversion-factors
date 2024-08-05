@@ -1,0 +1,140 @@
+---
+title: "Conversion from CIS to MS"
+execute: 
+  echo: false
+---
+
+```{r}
+#| message: false 
+library(tidyverse)
+library(brms)
+library(tidybayes)
+library(gtsummary)
+```
+
+```{r}
+raw_df <- read_csv("ms-conversion-rate.csv", show_col_types = FALSE)
+
+ms_data <- raw_df[-c(274:288) ,] |>
+  mutate(Age = `Age (y)`) |>
+  mutate(Schooling = `Schooling (y)`) |>
+  mutate(Gender = recode(Gender,
+                         '1' = "male",
+                         '2' = "female")) |>
+  mutate(Breastfeeding = recode(Breastfeeding,
+                                '1' = "yes",
+                                '2' = "no",
+                                '3' = "unknown")) |>
+  mutate(Varicella = recode(Varicella,
+                            '1' = "positive",
+                            '2' = "negative",
+                            '3' = "unknown")) |>
+  mutate(Initial_Symptoms = recode(`initial symptom`,
+                                  '1' = "visual",
+                                  '2' = "sensory",
+                                  '3' = "motor",
+                                  '4' = "other",
+                                  '5' = "visual  and sensory",
+                                  '6' = "visual  and motor",
+                                  '7' = "visual  and other",
+                                  '8' = "sensory  and motor",
+                                  '9' = "sensory  and other",
+                                  '10' = "motor  and  other",
+                                  '11' = "visual,  sensory and motor",
+                                  '12' = "visual, sensory  and other",
+                                  '13' = "visual, motor and  other",
+                                  '14' = "sensory,  motor and   other",
+                                  '15' = "visual,sensory,motor and other")) |>
+  mutate(Mono_Poly = recode(`Mono or polysymptomatic`,
+                            '1' = "monosymptomatic",
+                            '2' = "polysymptomatic",
+                            '3' = "unknown")) |>
+  mutate(Oligoclonal_Bands = recode(`Oligoclonal bands`,
+                                   '0' = "negative",
+                                   '1' = "positive",
+                                   '2' = "unknown")) |>
+  mutate(LLSSEP = recode(LLSSEP,
+                        '0' = "negative",
+                        '1' = "positive")) |>
+  mutate(ULSSEP = recode(ULSSEP,
+                        '0' = "negative",
+                        '1' = "positive")) |>
+  mutate(VEP = recode(VEP,
+                      '0' = "negative",
+                      '1' = "positive")) |>
+  mutate(BAEP = recode(BAEP,
+                       '0' = "negative",
+                       '1' = "positive")) |>
+  mutate(Periventricular_MRI = recode(`Periventricular MRI`,
+                                      '0' = "negative",
+                                      '1' = "positive")) |>
+  mutate(Cortical_MRI = recode(`Cortical MRI`,
+                                '0' = "negative",
+                                '1' = "positive")) |>
+  mutate(Infratentorial_MRI = recode(`Infratentorial MRI`,
+                                      '0' = "negative",
+                                      '1' = "positive")) |>
+  mutate(Spinal_Cord_MRI = recode(`Spinal cord MRI`,
+                                  '0' = "negative",
+                                  '1' = "positive")) |> 
+  mutate(group = recode(group,
+                        '1' = "CDMS",
+                        '2' = "Non-CDMS")) |>
+  select(Patient, 
+         Gender, 
+         Age, 
+         Schooling, 
+         Breastfeeding, 
+         Varicella,
+         Initial_Symptoms,
+         Mono_Poly,
+         Oligoclonal_Bands,
+         LLSSEP,
+         ULSSEP,
+         VEP,
+         BAEP,
+         Periventricular_MRI,
+         Cortical_MRI,
+         Infratentorial_MRI,
+         Spinal_Cord_MRI,
+         group) |> 
+  drop_na()
+
+x <- ms_data |>
+  filter(Oligoclonal_Bands %in% c("positive", "negative"))
+```
+
+```{r}
+#| cache: true
+fit_ob <- brm(formula = group ~ Oligoclonal_Bands,
+              data = x,
+              family = bernoulli(),
+              silent = 2,
+              refresh = 0,
+              seed = 9)
+```
+
+
+```{r}
+ndata <- tibble(expand_grid(Oligoclonal_Bands = c("positive", "negative")))
+
+fit_ob |>
+  add_epred_draws(newdata = ndata) |>
+  ungroup() |>
+  select(Oligoclonal_Bands, .epred) |>
+  ggplot(aes(x = .epred, 
+             color = Oligoclonal_Bands, 
+             fill = Oligoclonal_Bands)) +
+  geom_density() +
+  labs(title = "Development MS based on presence of Oligoclonal Bands",
+       x = "Probability of Developing MS") +
+  theme(axis.title.y = element_blank(),
+      axis.text.y = element_blank(),
+      axis.ticks.y = element_blank(),
+      axis.line.y = element_blank())
+```
+
+
+Multiple Sclerosis (MS) is a devastating, demyelinating disease of the central nervous system that affects people of all ages and genders, and Clinically Isolated Syndrome (CIS) is a patient's first episode of neurological symptoms, which may then develop into MS. Using data from a study of the medical histories of Mexican patients diagnosed with CIS at NINN in Mexico City from 2006 to 2010, I sought to understand the connection between various symptoms and factors and the patient's later diagnosis of MS. After exploring the data, I focused on the presence of Oligoclonal Bands (OCBs), which are bands of immunogloblins seen in blood serum or cerebrospinal fluid, and isolated the data with only the responses "positive" and "negative". Positive indicates detected presence while negative indicates OCBs were not detected. Patients with a presence of OCBs have about 73% to 93% lower odds to be diagnosed with MS. Although the data included multiple variables such as age, gender, years of schooling, and past Varicella infections, I chose to model Oligoclonal Bands, with only values of "positive" and "negative", as a logistic function of whether or not a patient was diagnosed with MS. Patients with a positive presence were less likely to be diagnosed with MS than those with a negative presence.  
+
+

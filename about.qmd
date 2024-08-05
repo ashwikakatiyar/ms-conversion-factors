@@ -1,0 +1,13 @@
+---
+title: "About"
+---
+
+My name is Ashwika Katiyar, and I am a rising senior from Frisco, Texas!
+Here is my [Github account](https://github.com/ashwikakatiyar). 
+You can contact me at ashwikakatiyar@gmail.com.
+
+This project, and its associated [Github repository](https://github.com/ashwikakatiyar/ms-incidence-rates) 
+displays age and sex specific incidence rates for Multiple Sclerosis in 2022 in 
+Alberta, Canada. 
+
+This project was created as a part of [Kane’s Data Science Bootcamp](https://bootcamp.davidkane.info/).
