@@ -65,6 +65,9 @@ interactive_line <-
 interactive_line
 ```
 
+Using MS Incidence Rate data, which is the number of incident (new) cases divided by the total population at risk per 100 000 people, from the government of Alberta’s Interactive Health Data Application, it appears that women are diagnosed with MS at a higher rate than men. Using data from the 2006-2010 study, I also explored the relationship between sex and MS diagnosis. 
+
+
 ```{r}
 raw_df <- read_csv("ms-conversion-rate.csv", show_col_types = FALSE)
 
@@ -164,9 +167,6 @@ fit_dem <- brm(formula = group ~ Gender,
               seed = 9)
 ```
 
-```{r}
-tbl_regression(fit_dem)
-```
 
 ```{r}
 #| message: false
@@ -186,6 +186,9 @@ fit_dem |>
   scale_y_continuous(labels = scales::percent_format()) +
   theme_classic()
 ```
+
+```{r}
+tbl_regression(fit_dem)
 ```
 
-
+Men seem to have about 63% lower odds of being diagnosed with MS than women, although that estimate could be as high as 77% or as low as 43%. I modeled sex, with only values of "male" and "female", as a logistic function of whether or not a patient was diagnosed with MS. Patients who were male were less likely to be diagnosed with MS than those who were female.
