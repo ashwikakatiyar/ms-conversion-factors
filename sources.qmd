@@ -1,0 +1,13 @@
+---
+title: "Sources"
+---
+
+This data is from [a study of Mexican mestizo patients newly diagnosed with CIS at the National Institute of Neurology and Neurosurgery (NINN) in Mexico City, Mexico from 2006 to 2010.](https://pubmed.ncbi.nlm.nih.gov/37429750/) The data can be accessed at [Mendeley Data](https://data.mendeley.com/datasets/8wk5hjx7x2/1) or on [Kaggle](https://www.kaggle.com/datasets/desalegngeb/conversion-predictors-of-cis-to-multiple-sclerosis)
+
+When exploring demographic factors, I also used Age-Sex Specific Multiple Sclerosis Incidence Rate
+Data from the government of [Alberta's Interactive Health Data
+Application](http://www.ahw.gov.ab.ca/IHDA_Retrieval/selectCategory.do). 
+
+I used the [Wes Anderson
+Palettes](https://github.com/karthik/wesanderson) R package created by [Karthik
+Ram](https://github.com/karthik) from Github for the colors in my graphs.

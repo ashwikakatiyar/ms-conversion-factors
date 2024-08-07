@@ -7,6 +7,6 @@ Here is my [Github account](https://github.com/ashwikakatiyar).
 You can contact me at ashwikakatiyar@gmail.com.
 
 This project, and its associated [Github repository](https://github.com/ashwikakatiyar/ms-conversion-factors) 
-explores factors associated with the development of Multiple Sclerosis. 
+explores potential predictors of the development of Multiple Sclerosis. 
 
 This project was created as a part of [Kane’s Data Science Bootcamp](https://bootcamp.davidkane.info/).

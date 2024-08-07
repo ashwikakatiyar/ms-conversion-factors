@@ -120,7 +120,7 @@ fit_ob <- brm(formula = group ~ Oligoclonal_Bands,
 ```{r}
 ndata <- tibble(expand_grid(Oligoclonal_Bands = c("positive", "negative")))
 
-fit_ob |>
+plot <- fit_ob |>
   add_epred_draws(newdata = ndata) |>
   ungroup() |>
   ggplot(aes(x = .epred, fill = Oligoclonal_Bands)) + 
@@ -133,9 +133,24 @@ fit_ob |>
   scale_fill_manual(values = wes_palette("FrenchDispatch")) +
   scale_y_continuous(labels = scales::percent_format()) +
   theme_classic()
+
+interactive_plot <- ggplotly(plot)
+
+interactive_plot
 ```
 
+**Introduction:**
+Multiple Sclerosis (MS) is a devastating, demyelinating disease of the central nervous system that affects people of all ages and genders, and Clinically Isolated Syndrome (CIS) is a patient's first episode of neurological symptoms, which may then develop into MS. 
 
-Multiple Sclerosis (MS) is a devastating, demyelinating disease of the central nervous system that affects people of all ages and genders, and Clinically Isolated Syndrome (CIS) is a patient's first episode of neurological symptoms, which may then develop into MS. Using data from a study of the medical histories of Mexican patients diagnosed with CIS at NINN in Mexico City from 2006 to 2010, I sought to understand the connection between various symptoms and factors and the patient's later diagnosis of MS. After exploring the data, I focused on the presence of Oligoclonal Bands (OCBs), which are bands of immunogloblins seen in blood serum or cerebrospinal fluid, and isolated the data with only the responses "positive" and "negative". Positive indicates detected presence while negative indicates OCBs were not detected. Patients with a presence of OCBs have about 85% lower odds to be diagnosed with MS, although that could be as low as 73% or as high as 93%. Although the data included multiple variables such as age, gender, years of schooling, and past Varicella infections, I chose to model Oligoclonal Bands, with only values of "positive" and "negative", as a logistic function of whether or not a patient was diagnosed with MS. Patients with a positive presence were less likely to be diagnosed with MS than those with a negative presence.  
+**Data:**
+Using data from a study of the medical histories of Mexican mestizo patients diagnosed with CIS at NINN in Mexico City from 2006 to 2010, I sought to understand the connection between various symptoms and factors and the patient's later diagnosis of MS. 
+
+After exploring the data, I focused on the presence of Oligoclonal Bands (OCBs), which are bands of immunogloblins seen in blood serum or cerebrospinal fluid, and isolated the data with only the responses "positive" and "negative". Positive indicates detected presence while negative indicates OCBs were not detected. 
+
+**Conclusion:**
+Patients with a presence of OCBs have about 85% lower odds to be diagnosed with MS, although that could be as low as 73% or as high as 93%. 
+
+**Model:**
+Although the data included multiple variables such as age, gender, years of schooling, and past Varicella infections, I chose to model Oligoclonal Bands, with only values of "positive" and "negative", as a logistic function of whether or not a patient was diagnosed with MS. Patients with a positive presence were less likely to be diagnosed with MS than those with a negative presence.  
 
 

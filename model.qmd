@@ -114,17 +114,32 @@ fit_ob <- brm(formula = group ~ Oligoclonal_Bands,
               seed = 9)
 ```
 
-```{r}
-#| message: false
-#| warning: false
-tbl_regression(fit_ob)
-pp_check(fit_ob)
-```
+## Mathematical Formula
 
 $$ \text{logit}(P(group = 1)) = \beta_0 + \beta_1 \cdot Oligoclonal\_Bands $$
 
 
 $$ P(group = 1) = \frac{1}{1 + \exp(-(\beta_0 + \beta_1 \cdot Oligoclonal\_Bands))} $$
+
+
+## Outcomes of the Model
+
+```{r}
+#| message: false
+#| warning: false
+tbl_regression(fit_ob)
+```
+
+## Posterior Predictive Check
+
+```{r}
+#| message: false
+#| warning: false
+pp_check(fit_ob)
+```
+
+As seen above, the model follows the general pattern of the actual data. 
+
 
 
 
