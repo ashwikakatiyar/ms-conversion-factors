@@ -11,7 +11,7 @@
     "href": "demographics.html",
     "title": "Demographic Factors",
     "section": "",
-    "text": "Characteristic\nBeta\n95% CI\n1\n\n\n\n\nGender\n\n\n\n\n\n\n    Gendermale\n-1.0\n-1.5, -0.51\n\n\n\n1\nCI = Credible Interval\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n```"
+    "text": "Using MS Incidence Rate data, which is the number of incident (new) cases divided by the total population at risk per 100 000 people, from the government of Alberta’s Interactive Health Data Application, it appears that women are diagnosed with MS at a higher rate than men. Using data from the 2006-2010 study, I also explored the relationship between sex and MS diagnosis.\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nCharacteristic\nBeta\n95% CI\n1\n\n\n\n\nGender\n\n\n\n\n\n\n    Gendermale\n-1.0\n-1.5, -0.51\n\n\n\n1\nCI = Credible Interval\n\n\n\n\n\n\n\n\nMen seem to have about 63% lower odds of being diagnosed with MS than women, although that estimate could be as high as 77% or as low as 43%. I modeled sex, with only values of “male” and “female”, as a logistic function of whether or not a patient was diagnosed with MS. Patients who were male were less likely to be diagnosed with MS than those who were female."
   },
   {
     "objectID": "model.html",
