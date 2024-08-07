@@ -118,8 +118,13 @@ fit_ob <- brm(formula = group ~ Oligoclonal_Bands,
 #| message: false
 #| warning: false
 tbl_regression(fit_ob)
+pp_check(fit_ob)
 ```
 
+$$ \text{logit}(P(group = 1)) = \beta_0 + \beta_1 \cdot Oligoclonal\_Bands $$
+
+
+$$ P(group = 1) = \frac{1}{1 + \exp(-(\beta_0 + \beta_1 \cdot Oligoclonal\_Bands))} $$
 
 
 
