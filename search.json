@@ -4,27 +4,76 @@
     "href": "about.html",
     "title": "About",
     "section": "",
-    "text": "My name is Ashwika Katiyar, and I am a rising senior from Frisco, Texas! Here is my Github account. You can contact me at ashwikakatiyar@gmail.com.\nThis project, and its associated Github repository explores factors associated with the development of Multiple Sclerosis.\nThis project was created as a part of Kane’s Data Science Bootcamp."
-  },
-  {
-    "objectID": "demographics.html",
-    "href": "demographics.html",
-    "title": "Demographic Factors",
-    "section": "",
-    "text": "Using MS Incidence Rate data, which is the number of incident (new) cases divided by the total population at risk per 100 000 people, from the government of Alberta’s Interactive Health Data Application, it appears that women are diagnosed with MS at a higher rate than men. Using data from the 2006-2010 study, I also explored the relationship between sex and MS diagnosis.\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nCharacteristic\nBeta\n95% CI\n1\n\n\n\n\nGender\n\n\n\n\n\n\n    Gendermale\n-1.0\n-1.5, -0.51\n\n\n\n1\nCI = Credible Interval\n\n\n\n\n\n\n\n\nMen seem to have about 63% lower odds of being diagnosed with MS than women, although that estimate could be as high as 77% or as low as 43%. I modeled sex, with only values of “male” and “female”, as a logistic function of whether or not a patient was diagnosed with MS. Patients who were male were less likely to be diagnosed with MS than those who were female."
-  },
-  {
-    "objectID": "model.html",
-    "href": "model.html",
-    "title": "Model",
-    "section": "",
-    "text": "Characteristic\nBeta\n95% CI\n1\n\n\n\n\nOligoclonal_Bands\n\n\n\n\n\n\n    Oligoclonal_Bandspositive\n-1.9\n-2.6, -1.3\n\n\n\n1\nCI = Credible Interval\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\\[ \\text{logit}(P(group = 1)) = \\beta_0 + \\beta_1 \\cdot Oligoclonal\\_Bands \\]\n\\[ P(group = 1) = \\frac{1}{1 + \\exp(-(\\beta_0 + \\beta_1 \\cdot Oligoclonal\\_Bands))} \\]"
+    "text": "My name is Ashwika Katiyar, and I am a rising senior from Frisco, Texas! Here is my Github account. You can contact me at ashwikakatiyar@gmail.com.\nThis project, and its associated Github repository explores potential predictors of the development of Multiple Sclerosis.\nThis project was created as a part of Kane’s Data Science Bootcamp."
   },
   {
     "objectID": "index.html",
     "href": "index.html",
     "title": "Conversion from CIS to MS",
     "section": "",
-    "text": "Multiple Sclerosis (MS) is a devastating, demyelinating disease of the central nervous system that affects people of all ages and genders, and Clinically Isolated Syndrome (CIS) is a patient’s first episode of neurological symptoms, which may then develop into MS. Using data from a study of the medical histories of Mexican patients diagnosed with CIS at NINN in Mexico City from 2006 to 2010, I sought to understand the connection between various symptoms and factors and the patient’s later diagnosis of MS. After exploring the data, I focused on the presence of Oligoclonal Bands (OCBs), which are bands of immunogloblins seen in blood serum or cerebrospinal fluid, and isolated the data with only the responses “positive” and “negative”. Positive indicates detected presence while negative indicates OCBs were not detected. Patients with a presence of OCBs have about 85% lower odds to be diagnosed with MS, although that could be as low as 73% or as high as 93%. Although the data included multiple variables such as age, gender, years of schooling, and past Varicella infections, I chose to model Oligoclonal Bands, with only values of “positive” and “negative”, as a logistic function of whether or not a patient was diagnosed with MS. Patients with a positive presence were less likely to be diagnosed with MS than those with a negative presence."
+    "text": "Introduction: Multiple Sclerosis (MS) is a devastating, demyelinating disease of the central nervous system that affects people of all ages and genders, and Clinically Isolated Syndrome (CIS) is a patient’s first episode of neurological symptoms, which may then develop into MS.\nData: Using data from a study of the medical histories of Mexican mestizo patients diagnosed with CIS at NINN in Mexico City from 2006 to 2010, I sought to understand the connection between various symptoms and factors and the patient’s later diagnosis of MS.\nAfter exploring the data, I focused on the presence of Oligoclonal Bands (OCBs), which are bands of immunogloblins seen in blood serum or cerebrospinal fluid, and isolated the data with only the responses “positive” and “negative”. Positive indicates detected presence while negative indicates OCBs were not detected.\nConclusion: Patients with a presence of OCBs have about 85% lower odds to be diagnosed with MS, although that could be as low as 73% or as high as 93%.\nModel: Although the data included multiple variables such as age, gender, years of schooling, and past Varicella infections, I chose to model Oligoclonal Bands, with only values of “positive” and “negative”, as a logistic function of whether or not a patient was diagnosed with MS. Patients with a positive presence were less likely to be diagnosed with MS than those with a negative presence."
+  },
+  {
+    "objectID": "model.html",
+    "href": "model.html",
+    "title": "Model",
+    "section": "",
+    "text": "\\[ \\text{logit}(P(group = 1)) = \\beta_0 + \\beta_1 \\cdot Oligoclonal\\_Bands \\]\n\\[ P(group = 1) = \\frac{1}{1 + \\exp(-(\\beta_0 + \\beta_1 \\cdot Oligoclonal\\_Bands))} \\]"
+  },
+  {
+    "objectID": "model.html#mathematical-formula",
+    "href": "model.html#mathematical-formula",
+    "title": "Model",
+    "section": "",
+    "text": "\\[ \\text{logit}(P(group = 1)) = \\beta_0 + \\beta_1 \\cdot Oligoclonal\\_Bands \\]\n\\[ P(group = 1) = \\frac{1}{1 + \\exp(-(\\beta_0 + \\beta_1 \\cdot Oligoclonal\\_Bands))} \\]"
+  },
+  {
+    "objectID": "model.html#outcomes-of-the-model",
+    "href": "model.html#outcomes-of-the-model",
+    "title": "Model",
+    "section": "Outcomes of the Model",
+    "text": "Outcomes of the Model\n\n\n\n\n\n\n\n\n\n\n\n\n\nCharacteristic\nBeta\n95% CI\n1\n\n\n\n\nOligoclonal_Bands\n\n\n\n\n\n\n    Oligoclonal_Bandspositive\n-1.9\n-2.6, -1.3\n\n\n\n1\nCI = Credible Interval"
+  },
+  {
+    "objectID": "model.html#posterior-predictive-check",
+    "href": "model.html#posterior-predictive-check",
+    "title": "Model",
+    "section": "Posterior Predictive Check",
+    "text": "Posterior Predictive Check\n\n\n\n\n\n\n\n\n\nAs seen above, the model follows the general pattern of the actual data."
+  },
+  {
+    "objectID": "demographics.html",
+    "href": "demographics.html",
+    "title": "Demographic Factors",
+    "section": "",
+    "text": "Using MS Incidence Rate data, which is the number of incident (new) cases divided by the total population at risk per 100 000 people, from the government of Alberta’s Interactive Health Data Application, it appears that women are diagnosed with MS at a higher rate than men. Using data from the 2006-2010 study, I also explored the relationship between sex and MS diagnosis."
+  },
+  {
+    "objectID": "demographics.html#ms-incidence-rate-over-time-by-sex",
+    "href": "demographics.html#ms-incidence-rate-over-time-by-sex",
+    "title": "Demographic Factors",
+    "section": "",
+    "text": "Using MS Incidence Rate data, which is the number of incident (new) cases divided by the total population at risk per 100 000 people, from the government of Alberta’s Interactive Health Data Application, it appears that women are diagnosed with MS at a higher rate than men. Using data from the 2006-2010 study, I also explored the relationship between sex and MS diagnosis."
+  },
+  {
+    "objectID": "demographics.html#statistical-model",
+    "href": "demographics.html#statistical-model",
+    "title": "Demographic Factors",
+    "section": "Statistical Model",
+    "text": "Statistical Model\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nCharacteristic\nBeta\n95% CI\n1\n\n\n\n\nGender\n\n\n\n\n\n\n    Gendermale\n-1.0\n-1.5, -0.51\n\n\n\n1\nCI = Credible Interval\n\n\n\n\n\n\n\n\nMen seem to have about 63% lower odds of being diagnosed with MS than women, although that estimate could be as high as 77% or as low as 43%. I modeled sex, with only values of “male” and “female”, as a logistic function of whether or not a patient was diagnosed with MS. Patients who were male were less likely to be diagnosed with MS than those who were female."
+  },
+  {
+    "objectID": "demographics.html#additional-graphs",
+    "href": "demographics.html#additional-graphs",
+    "title": "Demographic Factors",
+    "section": "Additional Graphs",
+    "text": "Additional Graphs"
+  },
+  {
+    "objectID": "sources.html",
+    "href": "sources.html",
+    "title": "Sources",
+    "section": "",
+    "text": "This data is from a study of Mexican mestizo patients newly diagnosed with CIS at the National Institute of Neurology and Neurosurgery (NINN) in Mexico City, Mexico from 2006 to 2010. The data can be accessed at Mendeley Data or on Kaggle\nWhen exploring demographic factors, I also used Age-Sex Specific Multiple Sclerosis Incidence Rate Data from the government of Alberta’s Interactive Health Data Application.\nI used the Wes Anderson Palettes R package created by Karthik Ram from Github for the colors in my graphs."
   }
 ]

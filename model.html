@@ -130,6 +130,10 @@ window.Quarto = {
 <span class="menu-text">Demographic Factors</span></a>
   </li>  
   <li class="nav-item">
+    <a class="nav-link" href="./sources.html"> 
+<span class="menu-text">Sources</span></a>
+  </li>  
+  <li class="nav-item">
     <a class="nav-link" href="./about.html"> 
 <span class="menu-text">About</span></a>
   </li>  
@@ -145,7 +149,15 @@ window.Quarto = {
 <!-- sidebar -->
 <!-- margin-sidebar -->
     <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
-        
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">On this page</h2>
+   
+  <ul>
+  <li><a href="#mathematical-formula" id="toc-mathematical-formula" class="nav-link active" data-scroll-target="#mathematical-formula">Mathematical Formula</a></li>
+  <li><a href="#outcomes-of-the-model" id="toc-outcomes-of-the-model" class="nav-link" data-scroll-target="#outcomes-of-the-model">Outcomes of the Model</a></li>
+  <li><a href="#posterior-predictive-check" id="toc-posterior-predictive-check" class="nav-link" data-scroll-target="#posterior-predictive-check">Posterior Predictive Check</a></li>
+  </ul>
+</nav>
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
@@ -169,6 +181,13 @@ window.Quarto = {
 </header>
 
 
+<section id="mathematical-formula" class="level2">
+<h2 class="anchored" data-anchor-id="mathematical-formula">Mathematical Formula</h2>
+<p><span class="math display">\[ \text{logit}(P(group = 1)) = \beta_0 + \beta_1 \cdot Oligoclonal\_Bands \]</span></p>
+<p><span class="math display">\[ P(group = 1) = \frac{1}{1 + \exp(-(\beta_0 + \beta_1 \cdot Oligoclonal\_Bands))} \]</span></p>
+</section>
+<section id="outcomes-of-the-model" class="level2">
+<h2 class="anchored" data-anchor-id="outcomes-of-the-model">Outcomes of the Model</h2>
 <div class="cell">
 <div class="cell-output-display">
 <div id="tdrenbhcyt" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
@@ -662,18 +681,23 @@ window.Quarto = {
 
 </div>
 </div>
+</div>
+</section>
+<section id="posterior-predictive-check" class="level2">
+<h2 class="anchored" data-anchor-id="posterior-predictive-check">Posterior Predictive Check</h2>
+<div class="cell">
 <div class="cell-output-display">
 <div>
 <figure class="figure">
-<p><img src="model_files/figure-html/unnamed-chunk-4-1.png" class="img-fluid figure-img" width="672"></p>
+<p><img src="model_files/figure-html/unnamed-chunk-5-1.png" class="img-fluid figure-img" width="672"></p>
 </figure>
 </div>
 </div>
 </div>
-<p><span class="math display">\[ \text{logit}(P(group = 1)) = \beta_0 + \beta_1 \cdot Oligoclonal\_Bands \]</span></p>
-<p><span class="math display">\[ P(group = 1) = \frac{1}{1 + \exp(-(\beta_0 + \beta_1 \cdot Oligoclonal\_Bands))} \]</span></p>
+<p>As seen above, the model follows the general pattern of the actual data.</p>
 
 
+</section>
 
 </main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
