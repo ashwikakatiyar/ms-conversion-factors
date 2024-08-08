@@ -118,23 +118,18 @@ ms_data <- raw_df[-c(274:288) ,] |>
 x <- ms_data |>
   filter(Oligoclonal_Bands %in% c("positive", "negative")) 
 
+set.seed(123)
 x <- x[sample(nrow(x), size = 1000, replace = TRUE), ]
 ```
 
 ```{r}
 #| label: model
-#| cache: true
 
 # Created brm model to compare group and Oligoclonal Bands. Used bernoulli
 # family because group and Oligoclonal_Bands are binary variables. Used silent
 # and refresh to get rid of extra output. Used seed to get replicable results.
 
-fit_ob <- brm(formula = group ~ Oligoclonal_Bands,
-              data = x,
-              family = bernoulli(),
-              silent = 2,
-              refresh = 0,
-              seed = 9)
+fit_ob <- readRDS("fit_ob.rds")
 ```
 
 
@@ -145,7 +140,7 @@ fit_ob <- brm(formula = group ~ Oligoclonal_Bands,
 
 ndata <- tibble(expand_grid(Oligoclonal_Bands = c("positive", "negative")))
 
-# Graphed posterior distribution of model. Initially tried making a histogram
+# Graphed posterior distribution of model. Initially tried making a density
 # but decided density plot better displayed the data. Used Wes Anderson Palettes
 # R Package for the colors in the bar graph. Opted not to add subtitle since key
 # takeaways were listed in paragraph below. Used minimal theme for clean look.

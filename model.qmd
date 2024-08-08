@@ -114,24 +114,16 @@ ms_data <- raw_df[-c(274:288) ,] |>
 
 x <- ms_data |>
   filter(Oligoclonal_Bands %in% c("positive", "negative"))
-
-x <- x[sample(nrow(x), size = 1000, replace = TRUE), ]
 ```
 
 ```{r}
 #| label: model
-#| cache: true
 
 # Created brm model to compare group and Oligoclonal Bands. Used bernoulli
 # family because group and Oligoclonal_Bands are binary variables. Used silent
 # and refresh to get rid of extra output. Used seed to get replicable results.
 
-fit_ob <- brm(formula = group ~ Oligoclonal_Bands,
-              data = x,
-              family = bernoulli(),
-              silent = 2,
-              refresh = 0,
-              seed = 9)
+fit_ob <- read_rds("fit_ob.rds")
 ```
 
 ## Mathematical Formula
@@ -165,7 +157,3 @@ pp_check(fit_ob)
 ```
 
 As seen above, the model follows the general pattern of the actual data. 
-
-
-
-
