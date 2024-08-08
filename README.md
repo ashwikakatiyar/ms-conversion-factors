@@ -1,1 +1,3 @@
-# ms-conversion-rate
+# Conversion of Clinically Isolated Syndrome to Multiple Sclerosis
+
+Multiple Sclerosis (MS) is a devastating, demyelinating disease of the central nervous system that affects people of all ages and genders, and Clinically Isolated Syndrome (CIS) is a patient's first episode of neurological symptoms, which may then develop into MS. This project explores potential predictors of the development of Multiple Sclerosis. You can find the website associated with this project here: https://ashwikakatiyar.github.io/ms-conversion-factors/ 
