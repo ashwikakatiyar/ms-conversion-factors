@@ -13,7 +13,6 @@ library(brms)
 library(tidybayes)
 library(gtsummary)
 library(wesanderson)
-library(plotly)
 ```
 
 ```{r}
@@ -140,16 +139,16 @@ fit_ob <- readRDS("fit_ob.rds")
 
 ndata <- tibble(expand_grid(Oligoclonal_Bands = c("positive", "negative")))
 
-# Graphed posterior distribution of model. Initially tried making a density
-# but decided density plot better displayed the data. Used Wes Anderson Palettes
+# Graphed posterior distribution of model. Initially tried making a density plot
+# but decided histogram better displayed the data. Used Wes Anderson Palettes
 # R Package for the colors in the bar graph. Opted not to add subtitle since key
 # takeaways were listed in paragraph below. Used minimal theme for clean look.
 
-plot <- fit_ob |>
+fit_ob |>
   add_epred_draws(newdata = ndata) |>
   ungroup() |>
   ggplot(aes(x = .epred, fill = Oligoclonal_Bands)) + 
-  geom_density(aes(y = after_stat(count/sum(count)))) +
+  geom_histogram(aes(y = after_stat(count/sum(count))), bins = 50) +
   labs(title = "Posterior Distribution for Probability of Developing MS Based on OCBs",
        x = "Expected Probability of Developing MS",
        y = "Probability",
@@ -158,12 +157,6 @@ plot <- fit_ob |>
   scale_fill_manual(values = wes_palette("FrenchDispatch")) +
   scale_y_continuous(labels = scales::percent_format()) +
   theme_classic()
-
-# Used plotly package to make graph interactive. Displayed density graph.
-
-interactive_plot <- ggplotly(plot)
-
-interactive_plot
 ```
 
 **Introduction:**
