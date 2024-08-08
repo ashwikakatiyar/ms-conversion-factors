@@ -11,28 +11,28 @@
     "href": "index.html",
     "title": "Conversion from CIS to MS",
     "section": "",
-    "text": "Introduction: Multiple Sclerosis (MS) is a devastating, demyelinating disease of the central nervous system that affects people of all ages and genders, and Clinically Isolated Syndrome (CIS) is a patient’s first episode of neurological symptoms, which may then develop into MS.\nData: Using data from a study of the medical histories of Mexican mestizo patients diagnosed with CIS at NINN in Mexico City from 2006 to 2010, I sought to understand the connection between various symptoms and factors and the patient’s later diagnosis of MS.\nAfter exploring the data, I focused on the presence of Oligoclonal Bands (OCBs), which are bands of immunogloblins seen in blood serum or cerebrospinal fluid, and isolated the data with only the responses “positive” and “negative”. Positive indicates detected presence while negative indicates OCBs were not detected.\nConclusion: Patients with a presence of OCBs have about 84.5% lower odds to be diagnosed with MS, although that could be as low as 80% or as high as 89%.\nModel: Although the data included multiple variables such as age, gender, years of schooling, and past Varicella infections, I chose to model Oligoclonal Bands, with only values of “positive” and “negative”, as a logistic function of whether or not a patient was diagnosed with MS. Patients with a positive presence were less likely to be diagnosed with MS than those with a negative presence."
+    "text": "Trying to compile a simple C file\n\n\nRunning /Library/Frameworks/R.framework/Resources/bin/R CMD SHLIB foo.c\nusing C compiler: ‘Apple clang version 15.0.0 (clang-1500.3.9.4)’\nusing SDK: ‘MacOSX14.4.sdk’\nclang -arch arm64 -I\"/Library/Frameworks/R.framework/Resources/include\" -DNDEBUG   -I\"/Library/Frameworks/R.framework/Versions/4.4-arm64/Resources/library/Rcpp/include/\"  -I\"/Library/Frameworks/R.framework/Versions/4.4-arm64/Resources/library/RcppEigen/include/\"  -I\"/Library/Frameworks/R.framework/Versions/4.4-arm64/Resources/library/RcppEigen/include/unsupported\"  -I\"/Library/Frameworks/R.framework/Versions/4.4-arm64/Resources/library/BH/include\" -I\"/Library/Frameworks/R.framework/Versions/4.4-arm64/Resources/library/StanHeaders/include/src/\"  -I\"/Library/Frameworks/R.framework/Versions/4.4-arm64/Resources/library/StanHeaders/include/\"  -I\"/Library/Frameworks/R.framework/Versions/4.4-arm64/Resources/library/RcppParallel/include/\"  -I\"/Library/Frameworks/R.framework/Versions/4.4-arm64/Resources/library/rstan/include\" -DEIGEN_NO_DEBUG  -DBOOST_DISABLE_ASSERTS  -DBOOST_PENDING_INTEGER_LOG2_HPP  -DSTAN_THREADS  -DUSE_STANC3 -DSTRICT_R_HEADERS  -DBOOST_PHOENIX_NO_VARIADIC_EXPRESSION  -D_HAS_AUTO_PTR_ETC=0  -include '/Library/Frameworks/R.framework/Versions/4.4-arm64/Resources/library/StanHeaders/include/stan/math/prim/fun/Eigen.hpp'  -D_REENTRANT -DRCPP_PARALLEL_USE_TBB=1   -I/opt/R/arm64/include    -fPIC  -falign-functions=64 -Wall -g -O2  -c foo.c -o foo.o\nIn file included from &lt;built-in&gt;:1:\nIn file included from /Library/Frameworks/R.framework/Versions/4.4-arm64/Resources/library/StanHeaders/include/stan/math/prim/fun/Eigen.hpp:22:\nIn file included from /Library/Frameworks/R.framework/Versions/4.4-arm64/Resources/library/RcppEigen/include/Eigen/Dense:1:\nIn file included from /Library/Frameworks/R.framework/Versions/4.4-arm64/Resources/library/RcppEigen/include/Eigen/Core:19:\n/Library/Frameworks/R.framework/Versions/4.4-arm64/Resources/library/RcppEigen/include/Eigen/src/Core/util/Macros.h:679:10: fatal error: 'cmath' file not found\n#include &lt;cmath&gt;\n         ^~~~~~~\n1 error generated.\nmake: *** [foo.o] Error 1\n\n\n\n\n\n\n\n\nIntroduction: Multiple Sclerosis (MS) is a devastating, demyelinating disease of the central nervous system that affects people of all ages and genders, and Clinically Isolated Syndrome (CIS) is a patient’s first episode of neurological symptoms, which may then develop into MS.\nData: Using data from a study of the medical histories of Mexican mestizo patients diagnosed with CIS at NINN in Mexico City from 2006 to 2010, I sought to understand the connection between various symptoms and factors and the patient’s later diagnosis of MS.\nAfter exploring the data, I focused on the presence of Oligoclonal Bands (OCBs), which are bands of immunogloblins seen in blood serum or cerebrospinal fluid, and isolated the data with only the responses “positive” and “negative”. Positive indicates detected presence while negative indicates OCBs were not detected.\nConclusion: Patients with a presence of OCBs have about 84.5% lower odds to be diagnosed with MS, although that could be as low as 80% or as high as 89%.\nModel: Although the data included multiple variables such as age, gender, years of schooling, and past Varicella infections, I chose to model Oligoclonal Bands, with only values of “positive” and “negative”, as a logistic function of whether or not a patient was diagnosed with MS. Patients with a positive presence were less likely to be diagnosed with MS than those with a negative presence."
   },
   {
     "objectID": "model.html",
     "href": "model.html",
     "title": "Model",
     "section": "",
-    "text": "\\[ \\text{logit}(P(group = 1)) = \\beta_0 + \\beta_1 \\cdot Oligoclonal\\_Bands \\]\n\\[ P(group = 1) = \\frac{1}{1 + \\exp(-(\\beta_0 + \\beta_1 \\cdot Oligoclonal\\_Bands))} \\]"
+    "text": "Trying to compile a simple C file\n\n\nRunning /Library/Frameworks/R.framework/Resources/bin/R CMD SHLIB foo.c\nusing C compiler: ‘Apple clang version 15.0.0 (clang-1500.3.9.4)’\nusing SDK: ‘MacOSX14.4.sdk’\nclang -arch arm64 -I\"/Library/Frameworks/R.framework/Resources/include\" -DNDEBUG   -I\"/Library/Frameworks/R.framework/Versions/4.4-arm64/Resources/library/Rcpp/include/\"  -I\"/Library/Frameworks/R.framework/Versions/4.4-arm64/Resources/library/RcppEigen/include/\"  -I\"/Library/Frameworks/R.framework/Versions/4.4-arm64/Resources/library/RcppEigen/include/unsupported\"  -I\"/Library/Frameworks/R.framework/Versions/4.4-arm64/Resources/library/BH/include\" -I\"/Library/Frameworks/R.framework/Versions/4.4-arm64/Resources/library/StanHeaders/include/src/\"  -I\"/Library/Frameworks/R.framework/Versions/4.4-arm64/Resources/library/StanHeaders/include/\"  -I\"/Library/Frameworks/R.framework/Versions/4.4-arm64/Resources/library/RcppParallel/include/\"  -I\"/Library/Frameworks/R.framework/Versions/4.4-arm64/Resources/library/rstan/include\" -DEIGEN_NO_DEBUG  -DBOOST_DISABLE_ASSERTS  -DBOOST_PENDING_INTEGER_LOG2_HPP  -DSTAN_THREADS  -DUSE_STANC3 -DSTRICT_R_HEADERS  -DBOOST_PHOENIX_NO_VARIADIC_EXPRESSION  -D_HAS_AUTO_PTR_ETC=0  -include '/Library/Frameworks/R.framework/Versions/4.4-arm64/Resources/library/StanHeaders/include/stan/math/prim/fun/Eigen.hpp'  -D_REENTRANT -DRCPP_PARALLEL_USE_TBB=1   -I/opt/R/arm64/include    -fPIC  -falign-functions=64 -Wall -g -O2  -c foo.c -o foo.o\nIn file included from &lt;built-in&gt;:1:\nIn file included from /Library/Frameworks/R.framework/Versions/4.4-arm64/Resources/library/StanHeaders/include/stan/math/prim/fun/Eigen.hpp:22:\nIn file included from /Library/Frameworks/R.framework/Versions/4.4-arm64/Resources/library/RcppEigen/include/Eigen/Dense:1:\nIn file included from /Library/Frameworks/R.framework/Versions/4.4-arm64/Resources/library/RcppEigen/include/Eigen/Core:19:\n/Library/Frameworks/R.framework/Versions/4.4-arm64/Resources/library/RcppEigen/include/Eigen/src/Core/util/Macros.h:679:10: fatal error: 'cmath' file not found\n#include &lt;cmath&gt;\n         ^~~~~~~\n1 error generated.\nmake: *** [foo.o] Error 1"
   },
   {
     "objectID": "model.html#mathematical-formula",
     "href": "model.html#mathematical-formula",
     "title": "Model",
-    "section": "",
-    "text": "\\[ \\text{logit}(P(group = 1)) = \\beta_0 + \\beta_1 \\cdot Oligoclonal\\_Bands \\]\n\\[ P(group = 1) = \\frac{1}{1 + \\exp(-(\\beta_0 + \\beta_1 \\cdot Oligoclonal\\_Bands))} \\]"
+    "section": "Mathematical Formula",
+    "text": "Mathematical Formula\n\\[ \\text{logit}(P(group = 1)) = \\beta_0 + \\beta_1 \\cdot Oligoclonal\\_Bands \\]\n\\[ P(group = 1) = \\frac{1}{1 + \\exp(-(\\beta_0 + \\beta_1 \\cdot Oligoclonal\\_Bands))} \\]"
   },
   {
     "objectID": "model.html#outcomes-of-the-model",
     "href": "model.html#outcomes-of-the-model",
     "title": "Model",
     "section": "Outcomes of the Model",
-    "text": "Outcomes of the Model\n\n\n\n\n\n\n\n\n\n\n\n\n\nCharacteristic\nBeta\n95% CI\n1\n\n\n\n\nOligoclonal_Bands\n\n\n\n\n\n\n    Oligoclonal_Bandspositive\n-1.9\n-2.6, -1.3\n\n\n\n1\nCI = Credible Interval"
+    "text": "Outcomes of the Model\n\n\n\n\n\n\n\n\n\n\n\n\n\nCharacteristic\nBeta\n95% CI\n1\n\n\n\n\nOligoclonal_Bands\n\n\n\n\n\n\n    Oligoclonal_Bandspositive\n-1.8\n-2.1, -1.5\n\n\n\n1\nCI = Credible Interval"
   },
   {
     "objectID": "model.html#posterior-predictive-check",
@@ -40,34 +40,6 @@
     "title": "Model",
     "section": "Posterior Predictive Check",
     "text": "Posterior Predictive Check\n\n\n\n\n\n\n\n\n\nAs seen above, the model follows the general pattern of the actual data."
-  },
-  {
-    "objectID": "demographics.html",
-    "href": "demographics.html",
-    "title": "Demographic Factors",
-    "section": "",
-    "text": "Using MS Incidence Rate data, which is the number of incident (new) cases divided by the total population at risk per 100 000 people, from the government of Alberta’s Interactive Health Data Application, it appears that women are diagnosed with MS at a higher rate than men. Using data from the 2006-2010 study, I also explored the relationship between sex and MS diagnosis."
-  },
-  {
-    "objectID": "demographics.html#ms-incidence-rate-over-time-by-sex",
-    "href": "demographics.html#ms-incidence-rate-over-time-by-sex",
-    "title": "Demographic Factors",
-    "section": "",
-    "text": "Using MS Incidence Rate data, which is the number of incident (new) cases divided by the total population at risk per 100 000 people, from the government of Alberta’s Interactive Health Data Application, it appears that women are diagnosed with MS at a higher rate than men. Using data from the 2006-2010 study, I also explored the relationship between sex and MS diagnosis."
-  },
-  {
-    "objectID": "demographics.html#statistical-model",
-    "href": "demographics.html#statistical-model",
-    "title": "Demographic Factors",
-    "section": "Statistical Model",
-    "text": "Statistical Model\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nCharacteristic\nBeta\n95% CI\n1\n\n\n\n\nGender\n\n\n\n\n\n\n    Gendermale\n-0.68\n-0.94, -0.43\n\n\n\n1\nCI = Credible Interval\n\n\n\n\n\n\n\n\nMen seem to have about 53% lower odds of being diagnosed with MS than women, although that estimate could be as high as 64% or as low as 40%. I modeled sex, with only values of “male” and “female”, as a logistic function of whether or not a patient was diagnosed with MS. Patients who were male were less likely to be diagnosed with MS than those who were female."
-  },
-  {
-    "objectID": "demographics.html#additional-graphs",
-    "href": "demographics.html#additional-graphs",
-    "title": "Demographic Factors",
-    "section": "Additional Graphs",
-    "text": "Additional Graphs"
   },
   {
     "objectID": "sources.html",
