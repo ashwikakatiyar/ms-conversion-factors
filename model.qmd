@@ -5,7 +5,9 @@ execute:
 ---
 
 ```{r}
+#| label: setup
 #| message: false 
+
 library(tidyverse)
 library(brms)
 library(tidybayes)
@@ -13,7 +15,15 @@ library(gtsummary)
 ```
 
 ```{r}
+#| label: download_format_data
+
+# Brought downloaded CSV file with data into project through
+# terminal. Turned CSV file into data frame.
+
 raw_df <- read_csv("ms-conversion-rate.csv", show_col_types = FALSE)
+
+# Recoded columns from numbers into descriptive labels using key at the bottom of
+# the data CSV.
 
 ms_data <- raw_df[-c(274:288) ,] |>
   mutate(Age = `Age (y)`) |>
@@ -100,6 +110,8 @@ ms_data <- raw_df[-c(274:288) ,] |>
          group) |> 
   drop_na()
 
+# Removed rows with "unknown" for Oligoclonal Bands for clarity
+
 x <- ms_data |>
   filter(Oligoclonal_Bands %in% c("positive", "negative"))
 
@@ -107,7 +119,13 @@ x <- x[sample(nrow(x), size = 1000, replace = TRUE), ]
 ```
 
 ```{r}
+#| label: model
 #| cache: true
+
+# Created brm model to compare group and Oligoclonal Bands. Used bernoulli
+# family because group and Oligoclonal_Bands are binary variables. Used silent
+# and refresh to get rid of extra output. Used seed to get replicable results.
+
 fit_ob <- brm(formula = group ~ Oligoclonal_Bands,
               data = x,
               family = bernoulli(),
@@ -129,6 +147,9 @@ $$ P(group = 1) = \frac{1}{1 + \exp(-(\beta_0 + \beta_1 \cdot Oligoclonal\_Bands
 ```{r}
 #| message: false
 #| warning: false
+
+# Displayed results from the model in a readable format
+
 tbl_regression(fit_ob)
 ```
 
@@ -137,6 +158,9 @@ tbl_regression(fit_ob)
 ```{r}
 #| message: false
 #| warning: false
+
+# Displayed pattern of the model vs the observed data
+
 pp_check(fit_ob)
 ```
 

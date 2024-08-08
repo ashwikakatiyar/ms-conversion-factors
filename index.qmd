@@ -5,7 +5,9 @@ execute:
 ---
 
 ```{r}
+#| label: setup
 #| message: false 
+
 library(tidyverse)
 library(brms)
 library(tidybayes)
@@ -15,7 +17,15 @@ library(plotly)
 ```
 
 ```{r}
+#| label: download_format_data
+
+# Brought downloaded CSV file with data into project through
+# terminal. Turned CSV file into data frame.
+
 raw_df <- read_csv("ms-conversion-rate.csv", show_col_types = FALSE)
+
+# Recoded columns from numbers into descriptive labels using key at the bottom of
+# the data CSV.
 
 ms_data <- raw_df[-c(274:288) ,] |>
   mutate(Age = `Age (y)`) |>
@@ -102,6 +112,9 @@ ms_data <- raw_df[-c(274:288) ,] |>
          group) |> 
   drop_na()
 
+
+# Removed rows with "unknown" for Oligoclonal Bands for clarity
+
 x <- ms_data |>
   filter(Oligoclonal_Bands %in% c("positive", "negative")) 
 
@@ -109,7 +122,13 @@ x <- x[sample(nrow(x), size = 1000, replace = TRUE), ]
 ```
 
 ```{r}
+#| label: model
 #| cache: true
+
+# Created brm model to compare group and Oligoclonal Bands. Used bernoulli
+# family because group and Oligoclonal_Bands are binary variables. Used silent
+# and refresh to get rid of extra output. Used seed to get replicable results.
+
 fit_ob <- brm(formula = group ~ Oligoclonal_Bands,
               data = x,
               family = bernoulli(),
@@ -120,7 +139,16 @@ fit_ob <- brm(formula = group ~ Oligoclonal_Bands,
 
 
 ```{r}
+#| label: posterior_plot
+
+# Created ndata object with all possible values for the right side variable
+
 ndata <- tibble(expand_grid(Oligoclonal_Bands = c("positive", "negative")))
+
+# Graphed posterior distribution of model. Initially tried making a histogram
+# but decided density plot better displayed the data. Used Wes Anderson Palettes
+# R Package for the colors in the bar graph. Opted not to add subtitle since key
+# takeaways were listed in paragraph below. Used minimal theme for clean look.
 
 plot <- fit_ob |>
   add_epred_draws(newdata = ndata) |>
@@ -135,6 +163,8 @@ plot <- fit_ob |>
   scale_fill_manual(values = wes_palette("FrenchDispatch")) +
   scale_y_continuous(labels = scales::percent_format()) +
   theme_classic()
+
+# Used plotly package to make graph interactive. Displayed density graph.
 
 interactive_plot <- ggplotly(plot)
 
