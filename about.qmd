@@ -2,7 +2,7 @@
 title: "About"
 ---
 
-My name is Ashwika Katiyar, and I am a rising senior from Frisco, Texas!
+My name is Ashwika Katiyar, and I am a senior from Frisco, Texas!
 Here is my [Github account](https://github.com/ashwikakatiyar). 
 You can contact me at ashwikakatiyar@gmail.com.
 
