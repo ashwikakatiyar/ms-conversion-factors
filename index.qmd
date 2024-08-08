@@ -103,7 +103,9 @@ ms_data <- raw_df[-c(274:288) ,] |>
   drop_na()
 
 x <- ms_data |>
-  filter(Oligoclonal_Bands %in% c("positive", "negative"))
+  filter(Oligoclonal_Bands %in% c("positive", "negative")) 
+
+x <- x[sample(nrow(x), size = 1000, replace = TRUE), ]
 ```
 
 ```{r}
@@ -148,7 +150,7 @@ Using data from a study of the medical histories of Mexican mestizo patients dia
 After exploring the data, I focused on the presence of Oligoclonal Bands (OCBs), which are bands of immunogloblins seen in blood serum or cerebrospinal fluid, and isolated the data with only the responses "positive" and "negative". Positive indicates detected presence while negative indicates OCBs were not detected. 
 
 **Conclusion:**
-Patients with a presence of OCBs have about 85% lower odds to be diagnosed with MS, although that could be as low as 73% or as high as 93%. 
+Patients with a presence of OCBs have about 84.5% lower odds to be diagnosed with MS, although that could be as low as 80% or as high as 89%. 
 
 **Model:**
 Although the data included multiple variables such as age, gender, years of schooling, and past Varicella infections, I chose to model Oligoclonal Bands, with only values of "positive" and "negative", as a logistic function of whether or not a patient was diagnosed with MS. Patients with a positive presence were less likely to be diagnosed with MS than those with a negative presence.  
