@@ -102,6 +102,8 @@ ms_data <- raw_df[-c(274:288) ,] |>
 
 x <- ms_data |>
   filter(Oligoclonal_Bands %in% c("positive", "negative"))
+
+x <- x[sample(nrow(x), size = 1000, replace = TRUE), ]
 ```
 
 ```{r}
