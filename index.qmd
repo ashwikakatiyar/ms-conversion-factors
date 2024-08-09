@@ -166,7 +166,7 @@ Multiple Sclerosis (MS) is a devastating, demyelinating disease of the central n
 **Data:**
 Using data from a study of the medical histories of Mexican mestizo patients diagnosed with CIS at NINN in Mexico City from 2006 to 2010, I sought to understand the connection between various symptoms and factors and the patient's later diagnosis of MS. 
 
-After exploring the data, I focused on the presence of Oligoclonal Bands (OCBs), which are bands of immunogloblins seen in blood serum or cerebrospinal fluid, and isolated the data with only the responses "positive" and "negative". Positive indicates detected presence while negative indicates OCBs were not detected. 
+After exploring the data, I focused on the presence of Oligoclonal Bands (OCBs), which are bands of immunoglobulins seen in blood serum or cerebrospinal fluid, and isolated the data with only the responses "positive" and "negative". Positive indicates detected presence while negative indicates OCBs were not detected. 
 
 **Conclusion:**
 Patients with a presence of OCBs have about 84.5% lower odds to be diagnosed with MS, although that could be as low as 80% or as high as 89%. 
