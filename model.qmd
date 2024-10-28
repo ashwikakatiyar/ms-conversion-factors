@@ -114,6 +114,10 @@ ms_data <- raw_df[-c(274:288) ,] |>
 
 x <- ms_data |>
   filter(Oligoclonal_Bands %in% c("positive", "negative"))
+
+x <- x |>
+  mutate(Oligoclonal_Bands = factor(Oligoclonal_Bands, levels = c("positive", "negative")))
+
 ```
 
 ```{r}
